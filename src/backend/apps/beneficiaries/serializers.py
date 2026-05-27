@@ -1,6 +1,9 @@
 from rest_framework import serializers
 from .models import Household, Family, Beneficiary, BeneficiaryIndicator, SECTOR_CHOICES
-from apps.audit.services import log_created, log_updated, snapshot
+try:
+    from ..audit.services import log_created, log_updated, snapshot
+except ImportError:  # pragma: no cover - compatibility fallback for deployments using top-level `apps`
+    from apps.audit.services import log_created, log_updated, snapshot
 
 
 def _field(attrs, instance, field, default=None):
