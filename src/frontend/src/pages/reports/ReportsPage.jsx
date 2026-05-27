@@ -1,6 +1,23 @@
 import { useEffect, useMemo, useState } from 'react'
-import { cyclesApi } from '../../api/cycles'
 import { reportsApi, downloadBlob } from '../../api/reports'
+
+const cyclesApi = {
+  getAll: (...args) => {
+    if (typeof reportsApi.getCycles === 'function') {
+      return reportsApi.getCycles(...args)
+    }
+
+    if (typeof reportsApi.listCycles === 'function') {
+      return reportsApi.listCycles(...args)
+    }
+
+    if (typeof reportsApi.getAllCycles === 'function') {
+      return reportsApi.getAllCycles(...args)
+    }
+
+    throw new Error('Cycle API is unavailable: no cycle-loading method was found on reportsApi.')
+  },
+}
 
 function Icon({ children, size = 18 }) {
   return (
