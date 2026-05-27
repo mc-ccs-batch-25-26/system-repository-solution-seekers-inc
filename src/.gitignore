@@ -1,0 +1,73 @@
+# Python / Django
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+.eggs/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Django local runtime files
+*.log
+*.sqlite3
+*.sqlite3-journal
+local_settings.py
+backend/db.sqlite3
+backend/db.sqlite3-journal
+backend/staticfiles/
+backend/media/
+backend/runserver.log
+backend/runserver.err.log
+
+# Environment and secret files
+.env
+.env.*
+!.env.example
+backend/.env
+backend/.env.*
+!backend/.env.example
+frontend/.env
+frontend/.env.*
+!frontend/.env.example
+
+# Node / React
+node_modules/
+frontend/node_modules/
+dist/
+build/
+frontend/dist/
+frontend/build/
+.pnp
+.pnp.js
+
+# Vite / frontend runtime files
+frontend/.vite/
+frontend/vite.log
+frontend/vite.err.log
+
+# Deployment tool local folders
+.vercel/
+.netlify/
+.render/
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
