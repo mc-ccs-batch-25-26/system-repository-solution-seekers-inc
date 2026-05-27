@@ -1,7 +1,46 @@
 import { useState, useEffect } from 'react'
-import { cyclesApi } from '../../api/cycles'
-import { scoringApi } from '../../api/scoring'
-import { Skeleton } from '../../components/common/Skeleton'
+
+async function apiRequest(url) {
+  const response = await fetch(url, {
+    headers: {
+      Accept: 'application/json',
+    },
+  })
+
+  let data = null
+  try {
+    data = await response.json()
+  } catch {
+    data = null
+  }
+
+  if (!response.ok) {
+    const error = new Error('Request failed')
+    error.response = {
+      status: response.status,
+      data,
+    }
+    throw error
+  }
+
+  return data
+}
+
+const cyclesApi = {
+  list() {
+    return apiRequest('/api/cycles/')
+  },
+}
+
+const scoringApi = {
+  myScore(cycleId) {
+    return apiRequest(`/api/scoring/my-score/?cycle=${encodeURIComponent(cycleId)}`)
+  },
+}
+
+function Skeleton({ className = '' }) {
+  return <div className={`animate-pulse rounded-md bg-ink-100 ${className}`.trim()} aria-hidden="true" />
+}
 
 const STATUS_STYLE = {
   selected: { card: 'border-emerald-200 bg-emerald-50', badge: 'bg-emerald-100 text-emerald-700', text: 'text-emerald-700', title: 'Selected', message: 'You have been selected for this cycle.' },
