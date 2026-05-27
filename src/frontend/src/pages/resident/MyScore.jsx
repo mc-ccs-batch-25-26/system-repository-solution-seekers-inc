@@ -122,9 +122,9 @@ export default function MyScore() {
             <circle cx="12" cy="12" r="10" /><path d="M12 8v4" /><path d="M12 16h.01" />
           </svg>
           <span>
-            <span className="block font-semibold">No visible score for this cycle</span>
+            <span className="block font-semibold">Unable to load program cycle or score information</span>
             <span className="mt-0.5 block text-xs leading-5">
-              {error} This usually means you were not marked as an applicant for the selected cycle yet.
+              {error}
             </span>
           </span>
         </div>
