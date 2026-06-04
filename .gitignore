@@ -3,3 +3,6 @@ __pycache__/
 .env
 *.log
 dist/
+db.sqlite3
+.venv/
+media/
